@@ -1,0 +1,39 @@
+<!--{widget}-->
+<div class="teamEditor panel panel-default">
+    <div class="panel-heading text-center">
+        <h3 class="panel-title pull-left">
+            <span data-isedit="hide">Создание рабочей группы</span>
+            <span data-isedit="show">Редактирование рабочей группы</span>
+        </h3>
+
+        <div class="btn-toolbar pull-right">
+            <button data-click="save" class="btn btn-default btn-xs">
+                <span data-isedit="hide">Создать</span>
+                <span data-isedit="show">Сохранить</span>
+            </button>
+            <a href="#" data-url="ws" class="btn btn-default btn-xs">
+                Отмена
+            </a>
+        </div>
+
+        <img data-wait="show" src="/images/loading.gif"/>
+        <div class="clearfix"></div>
+    </div>
+    <div class="panel-body">
+        <div id="{i#teamEditorFormWidget}"></div>
+    </div>
+    <div class="panel-footer text-right">
+        <div class="btn-toolbar pull-right">
+            <button data-click="save" class="btn btn-default">
+                <span data-isedit="hide">Создать</span>
+                <span data-isedit="show">Сохранить</span>
+            </button>
+            <a href="#" data-url="ws" class="btn btn-default">
+                Отмена
+            </a>
+        </div>
+
+        <img data-wait="show" src="/images/loading.gif"/>
+        <div class="clearfix"></div>
+    </div>
+</div>

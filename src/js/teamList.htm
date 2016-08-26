@@ -1,0 +1,59 @@
+<!--{widget}-->
+<div class="teamList panel panel-default">
+    <div class="panel-heading text-center">
+
+        <h3 class="panel-title pull-left">Доступные рабочие группы</h3>
+
+        <div class="btn-group pull-right">
+
+            <a href="#" data-url="team.create"
+               data-wait="disable"
+               class="btn btn-default btn-xs">
+                Создать
+            </a>
+        </div>
+
+        <span data-wait="show">
+            <img src="/images/loading.gif"/> Загрузка...
+        </span>
+
+        <div class="clearfix"></div>
+    </div>
+    <div class="panel-body">
+        <div id="{i#list}"></div>
+    </div>
+</div>
+
+<!--{list}-->
+<table class="table table-striped table-hover">
+    <thead>
+    <tr>
+        <th>#</th>
+        <th>Дата</th>
+        <th>Кому</th>
+        <th>Тема</th>
+        <th></th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    {v#rows}
+    </tbody>
+</table>
+
+<!--{row}-->
+<tr>
+    <td>{v#id}</td>
+    <td>{v#date}</td>
+    <td>{v#toEmail}</td>
+    <td>{v#subject}</td>
+    <td>{v#sendErrorFlag}</td>
+    <td>
+        <a href="#" data-url="mail.view({v#id})" data-id="{v#id}"
+           data-wait="disable"
+           class="btn btn-default btn-xs"
+           type="button">
+            Просмотреть
+        </a>
+    </td>
+</tr>
