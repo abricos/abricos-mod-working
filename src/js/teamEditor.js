@@ -23,6 +23,17 @@ Component.entryPoint = function(NS){
                 srcNode: tp.one('teamEditorFormWidget')
             });
         },
+        save: function(){
+            var app = this.get('appInstance'),
+                data = this.teamEditorFormWidget.toJSON();
+
+            data.id = this.get('teamid');
+
+            this.set('waiting', true);
+            app.teamSave(data, function(err, result){
+                this.set('waiting', false);
+            }, this);
+        }
     }, {
         ATTRS: {
             component: {value: COMPONENT},
@@ -35,7 +46,6 @@ Component.entryPoint = function(NS){
             }
         },
         CLICKS: {
-            cancel: 'cancel',
             save: 'save',
         },
         parseURLParam: function(args){

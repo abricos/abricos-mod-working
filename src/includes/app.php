@@ -12,7 +12,9 @@
  *
  * @property WorkingManager $manager
  */
-class WorkingApp extends AbricosApplication  {
+class WorkingApp extends AbricosApplication {
+
+    public $moduleName = 'working';
 
     protected function GetClasses(){
         return array(
@@ -26,6 +28,11 @@ class WorkingApp extends AbricosApplication  {
 
     public function ResponseToJSON($d){
         switch ($d->do){
+            case "teamSave":
+                return $this->TeamSaveToJSON($d->data);
+            case "teamList":
+                return $this->TeamListToJSON();
+
             case "config":
                 return $this->ConfigToJSON();
             case "configSave":
@@ -33,6 +40,51 @@ class WorkingApp extends AbricosApplication  {
 
         }
         return null;
+    }
+
+    /**
+     * @return TeamApp
+     */
+    public function GetTeamApp(){
+        return Abricos::GetApp('team');
+    }
+
+    public function IsAdminRole(){
+        return $this->manager->IsAdminRole();
+    }
+
+    public function IsWriteRole(){
+        return $this->manager->IsWriteRole();
+    }
+
+    public function IsViewRole(){
+        return $this->manager->IsViewRole();
+    }
+
+    public function TeamSaveToJSON($d){
+        $res = $this->TeamSave($d);
+        return $this->ResultToJSON('teamSave', $res);
+    }
+
+    public function TeamSave($d){
+        if (!$this->IsWriteRole()){
+            return AbricosResponse::ERR_FORBIDDEN;
+        }
+
+        return $this->GetTeamApp()->TeamSave($this->moduleName, $d);
+    }
+
+    public function TeamListToJSON(){
+        $res = $this->TeamList();
+        return $this->ResultToJSON('teamList', $res);
+    }
+
+    public function TeamList(){
+        if (!$this->IsViewRole()){
+            return AbricosResponse::ERR_FORBIDDEN;
+        }
+
+        return $this->GetTeamApp()->TeamList($this->moduleName);
     }
 
     public function ConfigToJSON(){

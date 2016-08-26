@@ -12,7 +12,18 @@
  */
 class WorkingManager extends Ab_ModuleManager {
 
+    /**
+     * @return TeamManager
+     */
+    public function GetTeamManager(){
+        return Abricos::GetModuleManager('team');
+    }
+
     public function IsAdminRole(){
+        $teamManager = $this->GetTeamManager();
+        if (!$teamManager->IsAdminRole()){
+            return false;
+        }
         return $this->IsRoleEnable(WorkingAction::ADMIN);
     }
 
@@ -20,6 +31,12 @@ class WorkingManager extends Ab_ModuleManager {
         if ($this->IsAdminRole()){
             return true;
         }
+
+        $teamManager = $this->GetTeamManager();
+        if (!$teamManager->IsWriteRole()){
+            return false;
+        }
+
         return $this->IsRoleEnable(WorkingAction::WRITE);
     }
 
@@ -27,6 +44,12 @@ class WorkingManager extends Ab_ModuleManager {
         if ($this->IsWriteRole()){
             return true;
         }
+
+        $teamManager = $this->GetTeamManager();
+        if (!$teamManager->IsViewRole()){
+            return false;
+        }
+
         return $this->IsRoleEnable(WorkingAction::VIEW);
     }
 

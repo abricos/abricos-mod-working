@@ -1,7 +1,7 @@
 var Component = new Brick.Component();
 Component.requires = {
     mod: [
-        {name: 'sys', files: ['application.js']},
+        {name: 'team', files: ['lib.js']},
         {name: '{C#MODNAME}', files: ['model.js']}
     ]
 };
@@ -24,7 +24,12 @@ Component.entryPoint = function(NS){
         }
     }, [], {
         REQS: {
-            teamList: {},
+            teamList: {
+                type: 'model:team:TeamList'
+            },
+            teamSave: {
+                args: ['data']
+            },
             config: {
                 attribute: true,
                 type: 'model:Config'
