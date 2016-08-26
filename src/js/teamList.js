@@ -12,6 +12,17 @@ Component.entryPoint = function(NS){
         SYS = Brick.mod.sys,
         NSTeam = Brick.mod.team;
 
+    NS.TeamRowWidget = Y.Base.create('TeamRowWidget', SYS.AppWidget, [
+        NSTeam.TeamRowWidgetExt
+    ], {
+
+    }, {
+        ATTRS: {
+            component: {value: COMPONENT},
+            templateBlockName: {value: 'item'},
+        },
+    });
+
     NS.TeamListWidget = Y.Base.create('teamListWidget', SYS.AppWidget, [], {
         onInitAppWidget: function(err, appInstance, options){
             var tp = this.template;
