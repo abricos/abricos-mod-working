@@ -32,6 +32,8 @@ class WorkingApp extends AbricosApplication {
                 return $this->TeamSaveToJSON($d->data);
             case "teamList":
                 return $this->TeamListToJSON();
+            case "team":
+                return $this->TeamToJSON($d->teamid);
 
             case "config":
                 return $this->ConfigToJSON();

@@ -32,6 +32,9 @@ Component.entryPoint = function(NS){
             this.set('waiting', true);
             app.teamSave(data, function(err, result){
                 this.set('waiting', false);
+                if (!err && result && result.teamSave){
+                    this.go('team.view', result.teamSave.teamid);
+                }
             }, this);
         }
     }, {

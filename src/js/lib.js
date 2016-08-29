@@ -23,10 +23,14 @@ Component.entryPoint = function(NS){
             }, this);
         }
     }, [], {
+        APPS: {
+            team: {}
+        },
+        ATTRS: {
+            isLoadAppStructure: {value: true},
+            Config: {value: NS.Config}
+        },
         REQS: {
-            teamList: {
-                type: 'model:team:TeamList'
-            },
             teamSave: {
                 args: ['data']
             },
@@ -37,10 +41,6 @@ Component.entryPoint = function(NS){
             configSave: {
                 args: ['config']
             }
-        },
-        ATTRS: {
-            isLoadAppStructure: {value: true},
-            Config: {value: NS.Config}
         },
         URLS: {
             ws: "#app={C#MODNAMEURI}/wspace/ws/",
