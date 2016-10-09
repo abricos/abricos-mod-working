@@ -61,19 +61,4 @@ class WorkingManager extends Ab_ModuleManager {
     public function AJAX($d){
         return $this->GetApp()->AJAX($d);
     }
-
-    public function Bos_MenuData(){
-        if (!$this->IsViewRole()){
-            return null;
-        }
-        $i18n = $this->module->I18n();
-        return array(
-            array(
-                "name" => "working",
-                "title" => $i18n->Translate('title'),
-                "icon" => "/modules/working/images/icon.gif",
-                "url" => "working/wspace/ws",
-            )
-        );
-    }
 }

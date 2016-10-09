@@ -19,10 +19,6 @@ class WorkingModule extends Ab_Module {
         $this->name = "working";
         $this->permission = new WorkingPermission($this);
     }
-
-    public function Bos_IsMenu(){
-        return true;
-    }
 }
 
 class WorkingAction {
